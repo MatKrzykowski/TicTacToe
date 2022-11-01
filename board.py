@@ -3,20 +3,18 @@ import numpy as np
 
 
 class TicTacToe_field(enum.Enum):
-    _ = 0
+    EMPTY = 0
     O = 1
     X = 2
 
 
-symbol = {
-    TicTacToe_field._: " ",
-    TicTacToe_field.X: "X",
-    TicTacToe_field.O: "O",
-}
+EMPTY, O, X = TicTacToe_field.EMPTY, TicTacToe_field.O, TicTacToe_field.X
+
+symbol = {EMPTY: " ", X: "X", O: "O"}
 
 
 class TicTacToe_board():
-    def __init__(self, array=[TicTacToe_field._ for i in range(9)]):
+    def __init__(self, array=[EMPTY for i in range(9)]):
         self.array = np.array(array)
 
     def __getitem__(self, key):
@@ -45,24 +43,24 @@ class TicTacToe_board():
     def is_win(self):
         # Vertical
         for i in range(3):
-            if self.array[i] != TicTacToe_field._ and np.all(self[i:i+9:3] == self.array[i]):
+            if self.array[i] != EMPTY and np.all(self[i:i+9:3] == self.array[i]):
                 return self.array[i]
         # Horizontal
         for i in range(3):
-            if self.array[3*i] != TicTacToe_field._ and np.all(self[i*3:i*3+3] == self.array[3*i]):
+            if self.array[3*i] != EMPTY and np.all(self[i*3:i*3+3] == self.array[3*i]):
                 return self.array[3*i]
         # Diagonal \
-        if self.array[0] != TicTacToe_field._ and np.all(self[0:9:4] == self.array[0]):
+        if self.array[0] != EMPTY and np.all(self[0:9:4] == self.array[0]):
             return self.array[0]
         # Diagonal /
-        if self.array[2] != TicTacToe_field._ and np.all(self[2:7:2] == self.array[2]):
+        if self.array[2] != EMPTY and np.all(self[2:7:2] == self.array[2]):
             return self.array[2]
-        return TicTacToe_field._
+        return EMPTY
 
     @property
     def is_free_space(self):
-        return np.any(self.array == TicTacToe_field._)
+        return np.any(self.array == EMPTY)
 
     @property
     def is_game_done(self):
-        return not self.is_free_space or self.is_win != TicTacToe_field._
+        return not self.is_free_space or self.is_win != EMPTY
