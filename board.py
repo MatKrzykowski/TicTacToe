@@ -39,10 +39,11 @@ class TicTacToe_board():
         C  {self.print_line(2)}
         """
 
+    @property
     def is_win(self):
         # Vertical
         for i in range(3):
-            if self.array[i] != TicTacTor_field._ and np.all(self[i:i+6:3] == self.array[i]):
+            if self.array[i] != TicTacTor_field._ and np.all(self[i:i+9:3] == self.array[i]):
                 return self.array[i]
         # Horizontal
         for i in range(3):
@@ -55,3 +56,11 @@ class TicTacToe_board():
         if self.array[2] != TicTacTor_field._ and np.all(self[2:7:2] == self.array[2]):
             return self.array[2]
         return TicTacTor_field._
+
+    @property
+    def is_free_space(self):
+        return np.any(self.array == TicTacTor_field._)
+
+    @property
+    def is_game_done(self):
+        return not self.is_free_space or self.is_win != TicTacTor_field._
