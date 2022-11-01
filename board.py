@@ -29,15 +29,15 @@ class TicTacToe_board():
         return symbol[self[i]]
 
     def print_line(self, i):
-        return f"{self.symbol(i*3)} | {self.symbol(i*3+1)} | {self.symbol(i*3+2)}"
+        return f"{self.symbol(i*3)} ║ {self.symbol(i*3+1)} ║ {self.symbol(i*3+2)}"
 
     def __str__(self):
         return f"""
            1   2   3
         A  {self.print_line(0)}
-           ---------
+           ══╬═══╬══
         B  {self.print_line(1)}
-           ---------
+           ══╬═══╬══
         C  {self.print_line(2)}
         """
 
