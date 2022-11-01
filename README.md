@@ -1,7 +1,6 @@
 # TicTacToe
 
 To-do:
-* Prepare a screen printout
 * Add ability to play for 2 players
 * Add simple AI
 * * Random free space
