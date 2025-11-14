@@ -1,7 +1,8 @@
 from board import TicTacToe_board, EMPTY, O, X
 
-class TicTacToe():
-    def __init__(self, first_player = O):
+
+class TicTacToe:
+    def __init__(self, first_player=O):
         self.player = first_player
         self.board = None
         self.is_done = False
@@ -61,6 +62,7 @@ class TicTacToe():
             self.player = O
         else:
             assert False
+
 
 if __name__ == "__main__":
     game = TicTacToe()

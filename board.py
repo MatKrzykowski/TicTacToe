@@ -13,7 +13,7 @@ EMPTY, O, X = TicTacToe_field.EMPTY, TicTacToe_field.O, TicTacToe_field.X
 symbol = {EMPTY: " ", X: "X", O: "O"}
 
 
-class TicTacToe_board():
+class TicTacToe_board:
     def __init__(self, array=[EMPTY for i in range(9)]):
         self.array = np.array(array)
 
@@ -43,12 +43,14 @@ class TicTacToe_board():
     def is_win(self):
         # Vertical
         for i in range(3):
-            if self.array[i] != EMPTY and np.all(self[i:i+9:3] == self.array[i]):
+            if self.array[i] != EMPTY and np.all(self[i : i + 9 : 3] == self.array[i]):
                 return self.array[i]
         # Horizontal
         for i in range(3):
-            if self.array[3*i] != EMPTY and np.all(self[i*3:i*3+3] == self.array[3*i]):
-                return self.array[3*i]
+            if self.array[3 * i] != EMPTY and np.all(
+                self[i * 3 : i * 3 + 3] == self.array[3 * i]
+            ):
+                return self.array[3 * i]
         # Diagonal \
         if self.array[0] != EMPTY and np.all(self[0:9:4] == self.array[0]):
             return self.array[0]
